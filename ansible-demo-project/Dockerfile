@@ -6,7 +6,8 @@ RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
     openssl \
-    && pip3 install --no-cache-dir ansible kubernetes
+    && pip3 install --no-cache-dir ansible kubernetes PyYAML
+
 
 
 # Install Ansible Galaxy collections for Kubernetes
