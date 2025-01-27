@@ -1,0 +1,29 @@
+# k8s/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ansible-demo
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ansible-demo
+  template:
+    metadata:
+      labels:
+        app: ansible-demo
+    spec:
+      containers:
+      - name: ansible-play-run
+        image: vithalangadidocker/my-ansible-demo
+      #   env:
+      #   - name: KUBECONFIG
+      #     value: "/kubeconfig/config"
+      #   volumeMounts:
+      #   - name: kubeconfig
+      #     mountPath: "/kubeconfig"
+      # volumes:
+      # - name: kubeconfig
+      #   configMap:
+      #     name: kubeconfig
