@@ -1,0 +1,3 @@
+- name: Verify deployment using Python
+  community.general.script:
+    cmd: "python3 verify_deployment.py"
