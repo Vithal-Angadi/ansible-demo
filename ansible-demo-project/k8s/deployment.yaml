@@ -15,7 +15,7 @@ spec:
         app: ansible-demo
     spec:
       containers:
-      - name: ansible-play-run
+      - name: ansible-demo-container
         image: vithalangadidocker/my-ansible-demo
       #   env:
       #   - name: KUBECONFIG
