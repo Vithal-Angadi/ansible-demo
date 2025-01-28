@@ -1,12 +1,28 @@
 # Use alpine/ansible as the base image
-FROM python:3.9
+FROM alpine/ansible:2.18.1
 
 # Update package list and install dependencies
-RUN apt-get update && apt-get install -y \
+RUN apk update && apk add --no-cache \
     python3 \
-    python3-pip \
+    py3-pip \
     openssl \
-    && pip3 install --no-cache-dir ansible kubernetes PyYAML
+    curl \
+    && python3 -m venv /venv \
+    && . /venv/bin/activate \
+    && pip install --no-cache-dir ansible kubernetes PyYAML
+
+# Install Helm
+RUN curl -fsSL -o /tmp/get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 \
+    && chmod +x /tmp/get_helm.sh \
+    && /tmp/get_helm.sh \
+    && rm -f /tmp/get_helm.sh
+
+# Set PATH to include the virtual environment and helm
+ENV PATH="/venv/bin:/usr/local/bin:$PATH"
+
+
+# Set PATH to include the virtual environment
+ENV PATH="/venv/bin:$PATH"
 
 
 
@@ -25,5 +41,3 @@ RUN ansible --version
 
 # command
 CMD ["-i","inventory","/ansible/playbooks/playbook.yaml"]
-# Entry point to run Ansible playbooks
-ENTRYPOINT ["ansible-playbook"]
