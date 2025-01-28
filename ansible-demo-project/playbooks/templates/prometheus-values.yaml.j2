@@ -1,2 +1,6 @@
 prometheus:
   enabled: true
+  global:
+    scrape_interval: 10s
+  prometheusSpec:
+    timeout: "600s"
