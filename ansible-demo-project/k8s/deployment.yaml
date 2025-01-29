@@ -17,13 +17,4 @@ spec:
       containers:
       - name: ansible-demo-container
         image: vithalangadidocker/my-ansible-demo
-      #   env:
-      #   - name: KUBECONFIG
-      #     value: "/kubeconfig/config"
-      #   volumeMounts:
-      #   - name: kubeconfig
-      #     mountPath: "/kubeconfig"
-      # volumes:
-      # - name: kubeconfig
-      #   configMap:
-      #     name: kubeconfig
+      
