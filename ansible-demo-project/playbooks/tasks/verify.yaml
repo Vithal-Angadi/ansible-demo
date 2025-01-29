@@ -1,6 +1,3 @@
-# - name: Verify deployment using Python
-#   community.general.script:
-#     cmd: "python3 verify_deployment.py"
 - name: Verify deployment using Python
   ansible.builtin.script:
     cmd: "python3 verify_deployment.py"
